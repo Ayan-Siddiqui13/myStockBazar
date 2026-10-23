@@ -1,495 +1,423 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>MyStockBazaar - Algo Trading for Indian Stock Market & MCX</title>
-    <meta
-      name="description"
-      content="MyStockBazaar: algo trading for NSE, BSE, F&O and MCX commodities. Demat, SIP, loans and insurance. Start a 3-day free Algo trial."
-    />
-    <link rel="stylesheet" href="style.css">
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23047A27'%3E%3Crect x='24' y='66' width='11' height='24' rx='2'/%3E%3Crect x='42' y='58' width='11' height='32' rx='2'/%3E%3Crect x='60' y='46' width='11' height='44' rx='2'/%3E%3Cpath d='M14 62C40 54 62 40 76 22L70 17 92 10 88 33 82 28C66 46 40 60 14 62Z'/%3E%3C/g%3E%3C/svg%3E"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-      <symbol id="lg" viewBox="0 0 100 100">
-        <g fill="#047A27">
-          <rect x="24" y="66" width="11" height="24" rx="2" />
-          <rect x="42" y="58" width="11" height="32" rx="2" />
-          <rect x="60" y="46" width="11" height="44" rx="2" />
-          <path
-            d="M14 62C40 54 62 40 76 22L70 17 92 10 88 33 82 28C66 46 40 60 14 62Z"
-          />
-        </g>
-      </symbol>
-    </svg>
 
-    <header>
-      <div class="wrap nav">
-        <a href="#home" class="logo"
-          ><svg role="img" aria-label="MyStockBazaar logo">
-            <use href="#lg" /></svg
-          >My<b>StockBazaar</b></a
-        >
-        <ul id="menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#demat">Demat</a></li>
-          <li><a href="#algo">Algo</a></li>
-          <li><a href="#sip">SIP</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li>
-            <a class="btn bp" href="#trial" style="padding: 9px 20px"
-              >Start Free Trial</a
-            >
-          </li>
-        </ul>
-        <div style="display: flex; gap: 8px">
-          <button class="ic" id="theme" aria-label="Toggle dark mode">🌙</button
-          ><button class="ic burger" id="burger" aria-label="Menu">☰</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>MyStockBazaar - Algo Trading for Indian Stock Market & MCX</title>
+  <meta name="description"
+    content="MyStockBazaar: algo trading for NSE, BSE, F&O and MCX commodities. Demat, SIP, loans and insurance. Start a 3-day free Algo trial." />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23047A27'%3E%3Crect x='24' y='66' width='11' height='24' rx='2'/%3E%3Crect x='42' y='58' width='11' height='32' rx='2'/%3E%3Crect x='60' y='46' width='11' height='44' rx='2'/%3E%3Cpath d='M14 62C40 54 62 40 76 22L70 17 92 10 88 33 82 28C66 46 40 60 14 62Z'/%3E%3C/g%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="lg" viewBox="0 0 100 100">
+      <g fill="#047A27">
+        <rect x="24" y="66" width="11" height="24" rx="2" />
+        <rect x="42" y="58" width="11" height="32" rx="2" />
+        <rect x="60" y="46" width="11" height="44" rx="2" />
+        <path d="M14 62C40 54 62 40 76 22L70 17 92 10 88 33 82 28C66 46 40 60 14 62Z" />
+      </g>
+    </symbol>
+  </svg>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#home" class="logo"><svg role="img" aria-label="MyStockBazaar logo">
+          <use href="#lg" />
+        </svg>My<b>StockBazaar</b></a>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#demat">Demat</a></li>
+        <li><a href="#algo">Algo</a></li>
+        <li><a href="#sip">SIP</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li>
+          <a class="btn bp" href="#trial" style="padding: 9px 20px">Start Free Trial</a>
+        </li>
+      </ul>
+      <div style="display: flex; gap: 8px">
+        <button class="ic" id="theme" aria-label="Toggle dark mode"></button>
+        <button class="ic burger" id="burger" aria-label="Menu">☰</button>
       </div>
-    </header>
-
-    <div class="tick" aria-label="Demo market ticker">
-      <div class="tt" id="tt"></div>
     </div>
+  </header>
 
-    <section class="hero" id="home">
-      <div class="wrap hg">
+  <div class="tick" aria-label="Demo market ticker">
+    <div class="tt" id="tt"></div>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="wrap hg">
+      <div>
+        <span class="tag">NSE · BSE · MCX</span>
+        <h1>Trade Smarter. <em>Grow Faster.</em></h1>
+        <p>
+          Rule-based algo trading for Indian equity, F&amp;O and MCX
+          commodities, plus Demat, SIP, loans and insurance, all in one place.
+        </p>
+        <div class="row">
+          <a class="btn bp" href="#trial">Start 3-Day Free Trial</a><a class="btn bo" href="#how">How It Works</a>
+        </div>
+        <p class="note" style="margin-top: 14px">
+          Markets involve risk. We do not guarantee profits.
+        </p>
+      </div>
+      <div class="card hc">
+        <svg class="big" role="img" aria-label="MyStockBazaar rising arrow logo">
+          <use href="#lg" />
+        </svg>
         <div>
-          <span class="tag">NSE · BSE · MCX</span>
-          <h1>Trade Smarter. <em>Grow Faster.</em></h1>
-          <p>
-            Rule-based algo trading for Indian equity, F&amp;O and MCX
-            commodities, plus Demat, SIP, loans and insurance, all in one place.
+          <h3 style="margin-bottom: 6px">Market Hours (IST)</h3>
+          <div class="mh">
+            <div>
+              NSE / BSE · Equity &amp; F&amp;O<small>9:15 AM – 3:30 PM, Mon–Fri</small>
+            </div>
+            <span class="badge" data-ex="nse"></span>
+          </div>
+          <div class="mh">
+            <div>
+              MCX · Commodities<small id="mcxT">9:00 AM – 11:30 PM, Mon–Fri</small>
+            </div>
+            <span class="badge" data-ex="mcx"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demat">
+    <div class="wrap">
+      <div class="card rv">
+        <h3 style="margin-bottom: 14px">
+          Open a Demat Account with our partner brokers
+        </h3>
+        <div class="brk" id="dm"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">MARKETS WE COVER</span>
+        <h2>Indian Equity &amp; Commodity Markets</h2>
+      </div>
+      <div class="grid mk" id="mk"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">SUPPORTED BROKERS</span>
+        <h2>Works With Leading Brokers</h2>
+      </div>
+      <div class="brk" id="brk"></div>
+    </div>
+  </section>
+
+  <section class="alt" id="how">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">HOW THE ALGO WORKS</span>
+        <h2>Three Simple Steps</h2>
+      </div>
+      <div class="grid" id="steps"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">FEATURES</span>
+        <h2>Built for Speed, Discipline &amp; Control</h2>
+      </div>
+      <div class="grid" id="feat"></div>
+    </div>
+  </section>
+
+  <section class="alt" id="algo">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">ALGO ACCESS</span>
+        <h2>Algo Strategies</h2>
+      </div>
+      <div class="trial rv" id="trial">
+        <div>
+          <h2>Try the Algo free for 3 days</h2>
+          <div class="rule">
+            Only 3-day FREE trial for the Algo. After the trial, you must buy
+            a membership to use the Algo.
+          </div>
+          <button class="btn bg" id="startTrial">
+            Start 3-Day Free Trial
+          </button>
+        </div>
+        <div>
+          <p id="cdLabel" style="margin-bottom: 10px; font-weight: 600">
+            Trial not started
           </p>
-          <div class="row">
-            <a class="btn bp" href="#trial">Start 3-Day Free Trial</a
-            ><a class="btn bo" href="#how">How It Works</a>
-          </div>
-          <p class="note" style="margin-top: 14px">
-            Markets involve risk. We do not guarantee profits.
-          </p>
-        </div>
-        <div class="card hc">
-          <svg
-            class="big"
-            role="img"
-            aria-label="MyStockBazaar rising arrow logo"
-          >
-            <use href="#lg" />
-          </svg>
-          <div>
-            <h3 style="margin-bottom: 6px">Market Hours (IST)</h3>
-            <div class="mh">
-              <div>
-                NSE / BSE · Equity &amp; F&amp;O<small
-                  >9:15 AM – 3:30 PM, Mon–Fri</small
-                >
-              </div>
-              <span class="badge" data-ex="nse"></span>
-            </div>
-            <div class="mh">
-              <div>
-                MCX · Commodities<small id="mcxT"
-                  >9:00 AM – 11:30 PM, Mon–Fri</small
-                >
-              </div>
-              <span class="badge" data-ex="mcx"></span>
-            </div>
+          <div class="cd">
+            <div><b id="cd">0</b>Days</div>
+            <div><b id="ch">0</b>Hours</div>
+            <div><b id="cm">0</b>Minutes</div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="demat">
-      <div class="wrap">
-        <div class="card rv">
-          <h3 style="margin-bottom: 14px">
-            Open a Demat Account with our partner brokers
-          </h3>
-          <div class="brk" id="dm"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="alt">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">MARKETS WE COVER</span>
-          <h2>Indian Equity &amp; Commodity Markets</h2>
-        </div>
-        <div class="grid mk" id="mk"></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">SUPPORTED BROKERS</span>
-          <h2>Works With Leading Brokers</h2>
-        </div>
-        <div class="brk" id="brk"></div>
-      </div>
-    </section>
-
-    <section class="alt" id="how">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">HOW THE ALGO WORKS</span>
-          <h2>Three Simple Steps</h2>
-        </div>
-        <div class="grid" id="steps"></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">FEATURES</span>
-          <h2>Built for Speed, Discipline &amp; Control</h2>
-        </div>
-        <div class="grid" id="feat"></div>
-      </div>
-    </section>
-
-    <section class="alt" id="algo">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">ALGO ACCESS</span>
-          <h2>Algo Strategies</h2>
-        </div>
-        <div class="trial rv" id="trial">
+      <div class="algo card" style="padding: 26px">
+        <div class="lock" id="lock">
           <div>
-            <h2>Try the Algo free for 3 days</h2>
-            <div class="rule">
-              Only 3-day FREE trial for the Algo. After the trial, you must buy
-              a membership to use the Algo.
-            </div>
-            <button class="btn bg" id="startTrial">
-              Start 3-Day Free Trial
-            </button>
-          </div>
-          <div>
-            <p id="cdLabel" style="margin-bottom: 10px; font-weight: 600">
-              Trial not started
+            <h3>🔒 Your free trial has ended</h3>
+            <p style="margin-bottom: 18px">
+              Buy a membership to continue using the Algo.
             </p>
-            <div class="cd">
-              <div><b id="cd">0</b>Days</div>
-              <div><b id="ch">0</b>Hours</div>
-              <div><b id="cm">0</b>Minutes</div>
-            </div>
+            <a class="btn bp" href="mailto:info@mystockbazaar.com?subject=Algo%20Membership">Buy Membership</a>
           </div>
         </div>
-        <div class="algo card" style="padding: 26px">
-          <div class="lock" id="lock">
-            <div>
-              <h3>🔒 Your free trial has ended</h3>
-              <p style="margin-bottom: 18px">
-                Buy a membership to continue using the Algo.
-              </p>
-              <a
-                class="btn bp"
-                href="mailto:info@mystockbazaar.com?subject=Algo%20Membership"
-                >Buy Membership</a
-              >
+        <div class="exp">
+          <div>
+            <h3>What you get in the Algo</h3>
+            <div class="chips">
+              <span>Trend Following</span><span>Options Strategies</span><span>Intraday
+                Systems</span><span>Arbitrage</span><span>MCX Commodities</span><span>Backtested Results</span>
             </div>
           </div>
-          <div class="exp">
-            <div>
-              <h3>What you get in the Algo</h3>
-              <div class="chips">
-                <span>Trend Following</span><span>Options Strategies</span
-                ><span>Intraday Systems</span><span>Arbitrage</span
-                ><span>MCX Commodities</span><span>Backtested Results</span>
-              </div>
-            </div>
-            <a
-              class="btn bp"
-              href="https://Antradingsolutions.com/explorer"
-              target="_blank"
-              rel="noopener"
-              >Explore Algo Strategies →</a
-            >
-          </div>
-          <div class="tabs">
-            <button class="tab on" data-g="a" data-t="a1">
-              Stocks &amp; F&amp;O</button
-            ><button class="tab g" data-g="a" data-t="a2">
-              MCX Commodities
-            </button>
-          </div>
-          <div class="pane on" id="a1">
-            <div class="sig">
-              <b>Trend Following · Nifty 50</b
-              ><span class="up">Buy · Executed</span>
-            </div>
-            <div class="sig">
-              <b>Options Strategy · Bank Nifty</b><span>Hedged · Active</span>
-            </div>
-            <div class="sig">
-              <b>Intraday · Fin Nifty</b><span>Auto square-off 3:15 PM</span>
-            </div>
-            <div class="sig">
-              <b>Arbitrage · Cash–Futures</b><span>Monitoring</span>
-            </div>
-          </div>
-          <div class="pane" id="a2">
-            <div class="sig">
-              <b>Gold Mini</b><span class="up">Buy · Executed</span>
-            </div>
-            <div class="sig">
-              <b>Crude Oil</b><span class="dn">Sell · Target Hit</span>
-            </div>
-            <div class="sig"><b>Silver Mini</b><span>Monitoring</span></div>
-            <div class="sig">
-              <b>Natural Gas / Copper / Zinc / Aluminium</b
-              ><span>Scanning</span>
-            </div>
-          </div>
-          <p class="note">Signals above are demo data for illustration only.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">SAMPLE / PAST PERFORMANCE</span>
-          <h2>Illustrative Performance</h2>
+          <a class="btn bp" href="https://Antradingsolutions.com/explorer" target="_blank" rel="noopener">Explore Algo
+            Strategies →</a>
         </div>
         <div class="tabs">
-          <button class="tab on" data-g="p" data-t="p1">
-            Stocks &amp; F&amp;O</button
-          ><button class="tab g" data-g="p" data-t="p2">MCX Commodities</button>
+          <button class="tab on" data-g="a" data-t="a1">
+            Stocks &amp; F&amp;O</button><button class="tab g" data-g="a" data-t="a2">
+            MCX Commodities
+          </button>
         </div>
-        <div class="pane on" id="p1"></div>
-        <div class="pane" id="p2"></div>
-        <p class="note" style="text-align: center">
-          Sample / past performance, for illustration only. Past performance is
-          not indicative of future results.
-        </p>
-      </div>
-    </section>
-
-    <section class="alt" id="sip">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">SIP CALCULATOR</span>
-          <h2>Calculate SIP Returns</h2>
-        </div>
-        <div class="card sip">
-          <div>
-            <div class="fld">
-              <div>
-                <label for="m">Monthly Investment</label><span id="mv"></span>
-              </div>
-              <input
-                type="range"
-                id="m"
-                min="500"
-                max="1000000"
-                step="500"
-                value="5000"
-              />
-            </div>
-            <div class="fld">
-              <div>
-                <label for="y">Investment Period</label><span id="yv"></span>
-              </div>
-              <input type="range" id="y" min="1" max="40" value="10" />
-            </div>
-            <div class="fld">
-              <div>
-                <label for="r">Expected Return (p.a.)</label
-                ><span id="rv"></span>
-              </div>
-              <input
-                type="range"
-                id="r"
-                min="1"
-                max="30"
-                step="0.1"
-                value="12"
-              />
-            </div>
-            <p class="note">
-              FV = P × (((1 + r)ⁿ − 1) ÷ r) × (1 + r). Estimates only; mutual
-              funds are subject to market risk.
-            </p>
+        <div class="pane on" id="a1">
+          <div class="sig">
+            <b>Trend Following · Nifty 50</b><span class="up">Buy · Executed</span>
           </div>
-          <div>
-            <div class="donut" id="dn">
-              <i>Invested vs<br />Returns</i>
-            </div>
-            <div class="res"><span>Total Value</span><b id="tv"></b></div>
-            <div class="res"><span>Invested Amount</span><b id="iv"></b></div>
-            <div class="res"><span>Estimated Returns</span><b id="ev"></b></div>
+          <div class="sig">
+            <b>Options Strategy · Bank Nifty</b><span>Hedged · Active</span>
+          </div>
+          <div class="sig">
+            <b>Intraday · Fin Nifty</b><span>Auto square-off 3:15 PM</span>
+          </div>
+          <div class="sig">
+            <b>Arbitrage · Cash–Futures</b><span>Monitoring</span>
           </div>
         </div>
+        <div class="pane" id="a2">
+          <div class="sig">
+            <b>Gold Mini</b><span class="up">Buy · Executed</span>
+          </div>
+          <div class="sig">
+            <b>Crude Oil</b><span class="dn">Sell · Target Hit</span>
+          </div>
+          <div class="sig"><b>Silver Mini</b><span>Monitoring</span></div>
+          <div class="sig">
+            <b>Natural Gas / Copper / Zinc / Aluminium</b><span>Scanning</span>
+          </div>
+        </div>
+        <p class="note">Signals above are demo data for illustration only.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="about">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">ABOUT US · WHY CHOOSE US</span>
-          <h2>Why Work With Us?</h2>
-          <p>
-            Market expertise, personalised support and risk-aware strategies to
-            help you make informed financial decisions.
+  <section>
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">SAMPLE / PAST PERFORMANCE</span>
+        <h2>Illustrative Performance</h2>
+      </div>
+      <div class="tabs">
+        <button class="tab on" data-g="p" data-t="p1">
+          Stocks &amp; F&amp;O</button><button class="tab g" data-g="p" data-t="p2">MCX Commodities</button>
+      </div>
+      <div class="pane on" id="p1"></div>
+      <div class="pane" id="p2"></div>
+      <p class="note" style="text-align: center">
+        Sample / past performance, for illustration only. Past performance is
+        not indicative of future results.
+      </p>
+    </div>
+  </section>
+
+  <section class="alt" id="sip">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">SIP CALCULATOR</span>
+        <h2>Calculate SIP Returns</h2>
+      </div>
+      <div class="card sip">
+        <div>
+          <div class="fld">
+            <div>
+              <label for="m">Monthly Investment</label><span id="mv"></span>
+            </div>
+            <input type="range" id="m" min="500" max="1000000" step="500" value="5000" />
+          </div>
+          <div class="fld">
+            <div>
+              <label for="y">Investment Period</label><span id="yv"></span>
+            </div>
+            <input type="range" id="y" min="1" max="40" value="10" />
+          </div>
+          <div class="fld">
+            <div>
+              <label for="r">Expected Return (p.a.)</label><span id="rv"></span>
+            </div>
+            <input type="range" id="r" min="1" max="30" step="0.1" value="12" />
+          </div>
+          <p class="note">
+            FV = P × (((1 + r)ⁿ − 1) ÷ r) × (1 + r). Estimates only; mutual
+            funds are subject to market risk.
           </p>
         </div>
-        <div class="grid" id="why"></div>
-      </div>
-    </section>
-
-    <section class="alt" id="team-sec">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">ABOUT US</span>
-          <h2>Meet Our Team</h2>
-          <p>
-            Experienced market professionals dedicated to your financial
-            journey.
-          </p>
-        </div>
-        <div class="team" id="team"></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">TESTIMONIALS</span>
-          <h2>What Members Say</h2>
-        </div>
-        <div class="grid">
-          <div class="card rv">
-            <blockquote>
-              “Setup was simple and the dashboard makes every trade easy to
-              follow.”
-            </blockquote>
-            <p class="who">Sample testimonial · Rahul S., Delhi</p>
+        <div>
+          <div class="donut" id="dn">
+            <i>Invested vs<br />Returns</i>
           </div>
-          <div class="card rv">
-            <blockquote>
-              “The stop-loss and risk controls helped me stay disciplined.”
-            </blockquote>
-            <p class="who">Sample testimonial · Priya M., Mumbai</p>
-          </div>
-          <div class="card rv">
-            <blockquote>
-              “Support is quick and explains everything patiently.”
-            </blockquote>
-            <p class="who">Sample testimonial · Amit K., Jaipur</p>
-          </div>
+          <div class="res"><span>Total Value</span><b id="tv"></b></div>
+          <div class="res"><span>Invested Amount</span><b id="iv"></b></div>
+          <div class="res"><span>Estimated Returns</span><b id="ev"></b></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="alt">
-      <div class="wrap">
-        <div class="sh rv">
-          <span class="tag">FAQ</span>
-          <h2>Frequently Asked Questions</h2>
-        </div>
-        <div class="faq" id="faq"></div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap">
-        <div class="fg">
-          <div>
-            <a href="#home" class="logo"
-              ><svg><use href="#lg" /></svg>My<b style="color: #3ddc72"
-                >StockBazaar</b
-              ></a
-            >
-            <p style="margin-top: 10px">Trade Smarter. Grow Faster.</p>
-            <p>info@mystockbazaar.com · 9311923673</p>
-            <div class="soc" aria-label="Social media">
-              <!-- Replace each # with your social media page link -->
-              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"
-                ><svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.700 2.600 4.700 6V21h-4v-5.200c0-1.300 0-2.900-1.800-2.900s-2.100 1.400-2.100 2.800V21h-4z"
-                  /></svg
-              ></a>
-              <a href="#" target="_blank" rel="noopener" aria-label="Instagram"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle
-                    cx="17.500"
-                    cy="6.500"
-                    r="1"
-                    fill="currentColor"
-                    stroke="none"
-                  /></svg
-              ></a>
-              <a href="#" target="_blank" rel="noopener" aria-label="YouTube"
-                ><svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M21.600 7.200a2.500 2.500 0 00-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 002.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 001.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 001.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3z"
-                  /></svg
-              ></a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener"
-                aria-label="X (Twitter)"
-                ><svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M17.800 3h3.100l-6.800 7.700L22 21h-6.200l-4.800-6.300L5.400 21H2.300l7.200-8.300L2 3h6.400l4.400 5.800zM16.700 19h1.700L7.400 4.800H5.600z"
-                  /></svg
-              ></a>
-            </div>
-          </div>
-          <div>
-            <h4>Explore</h4>
-            <a href="#algo">Algo</a><a href="#sip">SIP Calculator</a
-            ><a href="#about">About Us</a>
-          </div>
-          <div>
-            <h4>Services</h4>
-            <a href="#demat">Demat</a>
-          </div>
-          <div>
-            <h4>Legal</h4>
-            <a href="#">Terms</a><a href="#">Privacy Policy</a
-            ><a href="#">Refund Policy</a>
-          </div>
-        </div>
-        <p class="disc">
-          Investments in the securities and commodity markets are subject to
-          market risks. Read all related documents carefully before investing.
-          Past performance is not indicative of future results. We do not
-          guarantee profits. Charts, tickers and testimonials are illustrative
-          samples.<br />© <span id="yr"></span> MyStockBazaar. All rights
-          reserved.
+  <section id="about">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">ABOUT US · WHY CHOOSE US</span>
+        <h2>Why Work With Us?</h2>
+        <p>
+          Market expertise, personalised support and risk-aware strategies to
+          help you make informed financial decisions.
         </p>
       </div>
-    </footer>
-    <div class="toast" id="toast"></div>
+      <div class="grid" id="why"></div>
+    </div>
+  </section>
 
-    <script defer src="script.js"></script>
-  </body>
+  <section class="alt" id="team-sec">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">ABOUT US</span>
+        <h2>Meet Our Team</h2>
+        <p>
+          Experienced market professionals dedicated to your financial
+          journey.
+        </p>
+      </div>
+      <div class="team" id="team"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">TESTIMONIALS</span>
+        <h2>What Members Say</h2>
+      </div>
+      <div class="grid">
+        <div class="card rv">
+          <blockquote>
+            “Setup was simple and the dashboard makes every trade easy to
+            follow.”
+          </blockquote>
+          <p class="who">Sample testimonial · Rahul S., Delhi</p>
+        </div>
+        <div class="card rv">
+          <blockquote>
+            “The stop-loss and risk controls helped me stay disciplined.”
+          </blockquote>
+          <p class="who">Sample testimonial · Priya M., Mumbai</p>
+        </div>
+        <div class="card rv">
+          <blockquote>
+            “Support is quick and explains everything patiently.”
+          </blockquote>
+          <p class="who">Sample testimonial · Amit K., Jaipur</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sh rv">
+        <span class="tag">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="fg">
+        <div>
+          <a href="#home" class="logo"><svg>
+              <use href="#lg" />
+            </svg>My<b style="color: #3ddc72">StockBazaar</b></a>
+          <p style="margin-top: 10px">Trade Smarter. Grow Faster.</p>
+          <p>info@mystockbazaar.com · 9311923673</p>
+          <div class="soc" aria-label="Social media">
+            <!-- Replace each # with your social media page link -->
+            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.700 2.600 4.700 6V21h-4v-5.200c0-1.300 0-2.900-1.800-2.900s-2.100 1.400-2.100 2.800V21h-4z" />
+              </svg></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.500" cy="6.500" r="1" fill="currentColor" stroke="none" />
+              </svg></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M21.600 7.200a2.500 2.500 0 00-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 002.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 001.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 001.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3z" />
+              </svg></a>
+            <a href="#" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M17.800 3h3.100l-6.800 7.700L22 21h-6.200l-4.800-6.300L5.400 21H2.300l7.200-8.300L2 3h6.400l4.400 5.800zM16.700 19h1.700L7.400 4.800H5.600z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#algo">Algo</a><a href="#sip">SIP Calculator</a><a href="#about">About Us</a>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="#demat">Demat</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Terms</a><a href="#">Privacy Policy</a><a href="#">Refund Policy</a>
+        </div>
+      </div>
+      <p class="disc">
+        Investments in the securities and commodity markets are subject to
+        market risks. Read all related documents carefully before investing.
+        Past performance is not indicative of future results. We do not
+        guarantee profits. Charts, tickers and testimonials are illustrative
+        samples.<br />© <span id="yr"></span> MyStockBazaar. All rights
+        reserved.
+      </p>
+    </div>
+  </footer>
+  <div class="toast" id="toast"></div>
+
+  <script defer src="script.js"></script>
+</body>
+
 </html>
